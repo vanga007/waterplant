@@ -45,9 +45,10 @@ const SideNavigation = ({ path }) => {
       {/* Toggle Button */}
       <div className="flex items-center justify-end p-2">
         <button onClick={toggleSidebar} className=" 2xl:focus:outline-none">
-          {isSidebarOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
+          {isSidebarOpen ? "" : <MdMenu size={24} />}
         </button>
       </div>
+
       {/* Logo */}
       <div className="flex items-center justify-center mt-2 mb-5">
         <Image

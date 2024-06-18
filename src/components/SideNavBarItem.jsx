@@ -11,32 +11,32 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
   const isActive = (link) => router.asPath === link;
 
   return (
-    <div className='flex flex-col 2xl:py-0 lg:py-1 cursor-pointer mr-3 text-black'>
+    <div className='flex flex-col py-1 cursor-pointer mr-3'>
       {/* Main Menu */}
       <Link href={MenuItem.link || '#'}>
         <div
-          className={`group flex gap-2 2xl:mb-3 mb-1 hover:scale-x-105 items-center ${
-            isActive(MenuItem.link) ? 'bg-blue-900' : 'hover:bg-blue-900'
-          } text-black rounded-md 2xl:p-3 p-1.5 pl-2 transition-all duration-300`}
+          className={`group flex gap-3 mb-2 items-center ${
+            isActive(MenuItem.link) ? 'bg-blue-700 text-white' : 'hover:bg-blue-600 text-black'
+          } rounded-md p-3 transition-all duration-300 ease-in-out`}
           onClick={() => setOpen(!open)}
         >
           {MenuItem.img ? (
-            <img src={MenuItem?.img} alt='' className='2xl:w-5 2xl:h-5 w-4 h-4' />
+            <img src={MenuItem?.img} alt='' className='w-5 h-5' />
           ) : (
-            <span className='group-hover:text-primary-dark'>
-              <MenuItem.icon className='2xl:w-5 2xl:h-5 w-4 h-4 text-black group-hover:text-primary-dark' />
+            <span>
+              <MenuItem.icon className='w-5 h-5' />
             </span>
           )}
           {isSidebarOpen && (
-            <span className='2xl:text-[12px] hidden lg:block text-black text-secondary text-xl font-semibold font-Poppins group-hover:text-primary-dark'>
+            <span className='hidden lg:block text-lg font-semibold'>
               {MenuItem.title}
             </span>
           )}
           {MenuItem.subMenu && (
             <MdKeyboardArrowDown
-              className={`ml-auto text-lg ${
+              className={`ml-auto text-xl ${
                 open ? 'rotate-180' : ''
-              } transition-transform duration-300 group-hover:text-primary-dark`}
+              } transition-transform duration-300`}
             />
           )}
         </div>
@@ -44,15 +44,11 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
 
       {/* Submenu Container */}
       {MenuItem?.subMenu && (
-        <div
-          className={`2xl:ml-7 ml-5 flex gap-2 duration-300 relative ${
-            open ? 'block transition-all duration-300 ease-in-out' : 'hidden'
-          }`}
-        >
+        <div className={`ml-6 flex flex-col gap-2 ${open ? 'block' : 'hidden'}`}>
           {/* Vertical Line */}
-          <div className='bg-gray-400 w-[1px] h-[96%] relative transition-all duration-300'>
-            <span className='absolute top-0 right-0 -left-[3px] text-gray-400'>
-              <FaCircle className='text-[7px]' />
+          <div className='bg-gray-400 w-[2px] h-full relative'>
+            <span className='absolute top-0 right-0 -left-[3px]'>
+              <FaCircle className='text-[7px] text-gray-400' />
             </span>
             <span className='absolute bottom-0 -left-[3px]'>
               <FaCircle className='text-[7px] text-gray-400' />
@@ -60,27 +56,27 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
           </div>
 
           {/* Submenu Items */}
-          <div className='flex flex-col gap-3 w-full transition-all duration-300'>
+          <div className='flex flex-col gap-3'>
             {MenuItem.subMenu.map((subMenuItem, index) => (
               <Link key={index} href={subMenuItem.link}>
                 <div
-                  className={`flex gap-3 px-4 text-secondary-light 2xl:p-2 p-1.5 ${
+                  className={`flex gap-3 px-4 py-2 text-gray-700 ${
                     isActive(subMenuItem.link)
-                      ? 'bg-red-100 text-primary-dark'
-                      : 'hover:bg-red-100 hover:text-primary-dark'
-                  } rounded-md transition-all duration-300`}
+                      ? 'bg-blue-300 text-black'
+                      : 'hover:bg-blue-200 hover:text-black'
+                  } rounded-md transition-all duration-300 ease-in-out`}
                 >
                   {subMenuItem.img ? (
                     <img
                       src={subMenuItem.img}
                       alt={index}
-                      className='2xl:w-4 2xl:h-4 w-3 h-3 hover:rotate-[90deg] duration-300'
+                      className='w-4 h-4'
                     />
                   ) : (
-                    <subMenuItem.icon className='2xl:w-5 2xl:h-5 w-4 h-4 hover:rotate-[360deg] duration-300' />
+                    <subMenuItem.icon className='w-5 h-5' />
                   )}
                   {isSidebarOpen && (
-                    <span className='2xl:text-[12px] hidden lg:block text-[11px] font-light'>
+                    <span className='hidden lg:block text-sm'>
                       {subMenuItem.title}
                     </span>
                   )}

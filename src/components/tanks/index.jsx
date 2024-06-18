@@ -85,7 +85,7 @@ const TankCard = ({
         <div>
           <PieChart waterLevel={waterLevel} />
         </div>
-        <ProgressBar value={currentLevel} max={totalCapacity} label="Water Level" />
+        <ProgressBar value={waterLevel} max="500000" label="Water Level" />
 
         <div>
           <h1 className="inline-block text-xl font-semibold text-gray-600 text-dark  py-2 sm:text-2xl lg:text-xl xl:text-2xl">
@@ -94,7 +94,7 @@ const TankCard = ({
           <div className="flex py-1 ">
             <h1 className="text-black font-semibold">CurrentLevel : </h1>{" "}
             <p className=" text-gray-600 font-medium dark:text-dark-6 pl-2">
-              {currentLevel}
+              {waterLevel}
             </p>
           </div>
           <div className="flex  py-1 ">

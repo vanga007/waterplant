@@ -11,9 +11,7 @@ const TopNavigationBar = ({ loggeduser }) => {
   return (
     <header className="sticky top-0 left-0 right-0 bg-white py-2 text-black select-none z-50 shadow-sm border-b">
       <div className="flex justify-between items-center px-4">
-        {/* Logo or title can go here */}
         <div className="text-xl font-bold"></div>
-
         <div className="flex items-center gap-4">
           <button
             onClick={toggleDropdown}

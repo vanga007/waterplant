@@ -11,7 +11,7 @@ const Motors = () => {
   }, []);
 
   return (
-    <section className="bg-white pb-10 pt-14 dark:bg-dark lg:pb-20 lg:pt-[60px] text-black">
+    <section className=" pb-10 pt-14 dark:bg-dark lg:pb-20 lg:pt-[60px] text-black">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
@@ -49,11 +49,23 @@ const Motors = () => {
   );
 };
 
-const MotorCard = ({ name, Power, capacity, onOffState, hoursRun, Voltage, Phase, image }) => {
-  const cardBackgroundColor = onOffState === "On" ? "bg-green-100" : "bg-red-100";
+const MotorCard = ({
+  name,
+  Power,
+  capacity,
+  onOffState,
+  hoursRun,
+  Voltage,
+  Phase,
+  image,
+}) => {
+  const cardBackgroundColor =
+    onOffState === "On" ? "bg-green-100" : "bg-red-100";
 
   return (
-    <div className={`w-full px-6 md:w-1/2 lg:w-1/4 border-2 rounded-2xl ml-2 mt-2 ${cardBackgroundColor}`}>
+    <div
+      className={`w-full px-6 md:w-1/2 lg:w-1/4 border-2 rounded-2xl ml-2 mt-2 ${cardBackgroundColor}`}
+    >
       <div className="mb-10 w-full">
         <div className="mb-4 overflow-hidden rounded-2xl mt-4">
           <img src={image} alt={name} className="w-full" />
