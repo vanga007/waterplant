@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.btn {
+  @apply rounded-full px-5 pt-1 py-2;
+}
+
+.btn-primary-1 {
+  @apply rounded-full px-5 py-2 bg-primary-dark border-2 border-primary-dark text-white;
+}
+
+.btn-primary-2 {
+  @apply rounded-full px-5 pt-1 py-2 border-2 border-primary-dark text-primary-dark;
+}
+
+.btn-secondary {
+  @apply rounded-full px-5 pt-1 py-2 bg-white shadow-sm text-primary-dark border-2 border-white;
+}
+
+.btn-fill {
+  @apply hover:scale-x-105 hover:delay-100 text-white bg-primary-dark rounded-full px-2 py-2 text-xs hover:bg-primary-hover active:bg-primary-click shadow-md;
+}
+
+.btn-outline {
+  @apply hover:scale-x-105 hover:delay-100 text-primary-dark bg-white rounded-full px-4 py-1 text-xs shadow-md hover:bg-gray-hover active:bg-gray-light;
+}
+
+.btn-empty {
+  @apply text-primary-dark bg-transparent rounded-full px-4 py-1 text-xs shadow-md border-2 border-primary-dark hover:bg-gray-hover active:bg-gray-light;
+}
+
+.poppins-regular {
+  @apply font-Poppins text-[12px] font-medium;
+}
+

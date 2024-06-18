@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Motor A",
+    "Power": "1.5 HP",
+    "Voltage": "220V",
+    "RPM": "2900",
+    "Phase": "Single",
+    "capacity": "1000 L/h",
+    "onOffState": "On",
+    "hoursRun": "1200 hours",
+    "image": "https://i.ibb.co/hY0mRXB/water-pump.jpg"
+  },
+  {
+    "name": "Motor B",
+    "Power": "1.5 HP",
+    "Voltage": "220V",
+    "RPM": "2900",
+    "Phase": "Single",    "capacity": "6500 L/h",
+    "onOffState": "Off",
+    "hoursRun": "800 hours",
+    "image": "https://i.ibb.co/hY0mRXB/water-pump.jpg"
+  },
+  {
+    "name": "Motor C",
+    "Power": "1.5 HP",
+    "Voltage": "220V",
+    "RPM": "2900",
+    "Phase": "Two-Phase",
+    "capacity": "2500 L/h",
+    "onOffState": "On",
+    "hoursRun": "1500 hours",
+    "image": "https://i.ibb.co/hY0mRXB/water-pump.jpg"
+  }
+  
+]

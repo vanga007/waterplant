@@ -1,0 +1,30 @@
+
+  [
+    {
+      "id": "1",
+      "name": "Tank A",
+      "currentLevel": 320000,
+      "totalCapacity": 500000,
+      "location": "North Wing",
+      "timestamp": "2024-05-29T12:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Tank B",
+      "currentLevel": 150000,
+      "totalCapacity": 500000,
+      "location": "South Wing",
+      "timestamp": "2024-05-29T12:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Tank C",
+      "currentLevel": 450000,
+      "totalCapacity": 500000,
+      "location": "East Wing",
+      "timestamp": "2024-05-29T12:00:00Z"
+    }
+   
+    
+  
+  ]
