@@ -37,14 +37,14 @@ const SideNavigation = ({ path }) => {
 
   return (
     <div
-      className={`bg-white h-screen text-black flex flex-col select-none z-50 sticky left-0 top-0 bottom-0 border-r-gray-500 transition-width duration-300 ${
+      className={`bg-[#6FDCE3] h-screen text-black flex flex-col select-none z-50 sticky left-0 top-0 bottom-0 border-r-gray-500 transition-width duration-300 ${
         isSidebarOpen ? "w-54" : "w-10"
       }`}
     >
       
 
       {/* Logo */}
-      <div className="flex items-center justify-center mt-2 mb-5">
+      <div className="flex items-center justify-center mt-6 font-bold mb-5">
         {/* <Image
           src={"/asserts/icons/testogo.png"}
           alt="Logo"

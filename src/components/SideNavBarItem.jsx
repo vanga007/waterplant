@@ -17,8 +17,8 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
         <div
           className={`group flex gap-3 mb-1 items-center ${
             isActive(MenuItem.link)
-              ? "bg-blue-400 text-white"
-              : "hover:bg-blue-500 text-black"
+              ? "bg-white text-black"
+              : "hover:bg-white text-black"
           } rounded-md p-3 transition-all duration-300 ease-in-out`}
           onClick={() => setOpen(!open)}
         >

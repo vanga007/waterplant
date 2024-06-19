@@ -9,7 +9,7 @@ const TopNavigationBar = () => {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 bg-white py-2 text-black select-none z-50 shadow-md border-b">
+    <header className="sticky top-0 left-0 right-0 bg-[#6FDCE3] py-2 text-black select-none z-50 border-gray-400 shadow-sm">
       <div className="flex justify-between items-center px-4">
         <div className="text-xl font-bold"></div>
         <div className="flex items-center gap-4">
