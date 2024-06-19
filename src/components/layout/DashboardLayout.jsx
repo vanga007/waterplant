@@ -12,11 +12,11 @@ const DashboardLayout = ({ children }) => {
   }, [pathName]);
 
   return (
-    <main className="min-h-screen bg-white flex flex-col lg:flex-row">
-      <div className="w-full lg:w-2/12 bg-white shadow-md">
-        <SideNavigation />
+    <main className="min-h-screen bg-white flex flex-row">
+      <div className=" flex-shrink-0 bg-white w-2/12 shadow-inner">
+        <SideNavigation path={path} />
       </div>
-      <div className="flex flex-col w-full lg:w-10/12">
+      <div className="flex flex-col w-full">
         <TopNavigationBar />
         <div className="p-4 flex-grow bg-gray-100">{children}</div>
       </div>

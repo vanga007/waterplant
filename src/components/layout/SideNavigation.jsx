@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SideNavBarItem from "../SideNavBarItem";
-import Image from "next/image";
 import { FaRegHandshake } from "react-icons/fa";
 import { LuUsers } from "react-icons/lu";
-import { MdMenu, MdClose } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
 import { useRouter } from "next/router";
 
 // sidebar navigation items data
@@ -42,22 +41,18 @@ const SideNavigation = ({ path }) => {
         isSidebarOpen ? "w-54" : "w-10"
       }`}
     >
-      {/* Toggle Button */}
-      <div className="flex items-center justify-end p-2">
-        <button onClick={toggleSidebar} className=" 2xl:focus:outline-none">
-          {isSidebarOpen ? "" : <MdMenu size={24} />}
-        </button>
-      </div>
+      
 
       {/* Logo */}
       <div className="flex items-center justify-center mt-2 mb-5">
-        <Image
+        {/* <Image
           src={"/asserts/icons/testogo.png"}
           alt="Logo"
           draggable="false"
           height={50}
           width={50}
-        />
+        /> */}
+        Menu
       </div>
       {/* Menu Container */}
       <>

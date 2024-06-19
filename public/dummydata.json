@@ -8,7 +8,7 @@
     "capacity": "1000 L/h",
     "onOffState": "On",
     "hoursRun": "1200 hours",
-    "image": "https://i.ibb.co/hY0mRXB/water-pump.jpg"
+    "image": "https://i.ibb.co/7zxH7dt/motorimage1.jpg"
   },
   {
     "name": "Motor B",
@@ -18,7 +18,7 @@
     "Phase": "Single",    "capacity": "6500 L/h",
     "onOffState": "Off",
     "hoursRun": "800 hours",
-    "image": "https://i.ibb.co/hY0mRXB/water-pump.jpg"
+    "image": "https://i.ibb.co/wyYbNqB/motorimage2.gif"
   },
   {
     "name": "Motor C",

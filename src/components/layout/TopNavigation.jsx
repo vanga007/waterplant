@@ -1,7 +1,7 @@
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { useState } from "react";
 
-const TopNavigationBar = ({ loggeduser }) => {
+const TopNavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -9,13 +9,13 @@ const TopNavigationBar = ({ loggeduser }) => {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 bg-white py-2 text-black select-none z-50 shadow-sm border-b">
+    <header className="sticky top-0 left-0 right-0 bg-white py-2 text-black select-none z-50 shadow-md border-b">
       <div className="flex justify-between items-center px-4">
         <div className="text-xl font-bold"></div>
         <div className="flex items-center gap-4">
           <button
             onClick={toggleDropdown}
-            className="relative p-2 focus:outline-none text-3xl bg-primary-light rounded-full shadow-md text-black cursor-pointer"
+            className="relative p-2 focus:outline-none text-3xl bg-primary-light rounded-full shadow-md border border-gray-300 text-black cursor-pointer"
           >
             <IoMdNotificationsOutline />
           </button>
