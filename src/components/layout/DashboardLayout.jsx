@@ -18,7 +18,7 @@ const DashboardLayout = ({ children }) => {
       </div>
       <div className="flex flex-col w-full">
         <TopNavigationBar />
-        <div className="p-4 flex-grow bg-gray-100">{children}</div>
+        <div className="p-4 flex-grow ">{children}</div>
       </div>
     </main>
   );

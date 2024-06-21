@@ -9,7 +9,7 @@ const TopNavigationBar = () => {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 bg-[#6FDCE3] py-2 text-black select-none z-50 border-gray-400 shadow-sm">
+    <header className="sticky top-2 left-0 right-0 rounded-lg bg-[#6FDCE3] py-2 mt-2 mr-2 mb-2 text-black select-none z-50 border-gray-400 shadow-sm">
       <div className="flex justify-between items-center px-4">
         <div className="text-xl font-bold"></div>
         <div className="flex items-center gap-4">
@@ -27,7 +27,7 @@ const TopNavigationBar = () => {
               draggable="false"
             />
             <div className="flex flex-col">
-              <span className="text-sm font-medium">KVN Singh</span>
+              <span className="text-sm font-medium">Shrasshine</span>
               <span className="text-xs text-primary-dark underline">
                 View profile
               </span>

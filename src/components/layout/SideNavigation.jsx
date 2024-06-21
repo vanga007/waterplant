@@ -9,6 +9,11 @@ import { useRouter } from "next/router";
 const sideNavItemsData = {
   sidebaritems: [
     {
+      title: "Dashboard",
+      icon: LuUsers,
+      link: "/dashboard",
+    },
+    {
       title: "Tanks",
       icon: LuUsers,
       link: "/dashboard/tanks",
@@ -37,7 +42,7 @@ const SideNavigation = ({ path }) => {
 
   return (
     <div
-      className={`bg-[#6FDCE3] h-screen text-black flex flex-col select-none z-50 sticky left-0 top-0 bottom-0 border-r-gray-500 transition-width duration-300 ${
+      className={`bg-[#6FDCE3] h-screen  m-2 rounded-lg text-black flex flex-col select-none z-50 sticky left-0 top-2 bottom-0 border-r-gray-500 transition-width duration-300 ${
         isSidebarOpen ? "w-54" : "w-10"
       }`}
     >
