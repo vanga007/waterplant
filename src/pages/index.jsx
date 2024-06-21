@@ -1,62 +1,59 @@
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import Image from "next/image";
-import React from "react";
+// components/LoginComponent.js
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
-const index = () => {
+const LoginComponent = () => {
+  const router = useRouter();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Hardcoded credentials
+    const hardcodedUsername = 'shrasshine123@gmail.com';
+    const hardcodedPassword = 'shrasshine@123S';
+
+    if (username === hardcodedUsername && password === hardcodedPassword) {
+      router.push('/dashboard');
+    } else {
+      alert('Invalid credentials');
+    }
+  };
+
   return (
-    <DashboardLayout>
-      <div class="">
-        <div class="mx-auto max-w-7xl py-12 sm:px-6 sm:py-12 lg:px-8">
-          <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
-            <svg
-              viewBox="0 0 1024 1024"
-              class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
-              aria-hidden="true"
-            >
-              <circle
-                cx="512"
-                cy="512"
-                r="512"
-                fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
-                fill-opacity="0.7"
-              />
-              <defs>
-                <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
-                  <stop stop-color="#7775D6" />
-                  <stop offset="1" stop-color="#E935C1" />
-                </radialGradient>
-              </defs>
-            </svg>
-            <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-              <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Boost your productivity.
-                <br />
-                Start using our app today.
-              </h2>
-              <p class="mt-6 text-lg leading-8 text-gray-300">
-                Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-                Malesuada adipiscing sagittis vel nulla.
-              </p>
-              <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                <a
-                  href="#"
-                  class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  Get started
-                </a>
-                <a href="#" class="text-sm font-semibold leading-6 text-white">
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="relative mt-16 h-80 lg:mt-8">
-              {/* <Image class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src={} alt="App screenshot" width="1824" height="1080"/> */}
-            </div>
-          </div>
-        </div>
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-8">
+      <h2 className=" flex justify-center text-2xl font-semibold text-gray-800 mb-6">Welcome !</h2>
+
+        <h2 className=" flex justify-center text-2xl font-semibold text-gray-800 mb-6">Login to your account</h2>
+        <form onSubmit={handleLogin}>
+          <input 
+            type="text" 
+            placeholder="Enter Email" 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full mb-4 p-2 border-b border-gray-300 focus:outline-none text-black focus:border-gray-500"
+          />
+          <input 
+            type="password" 
+            placeholder="Enter Password" 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full mb-6 p-2 border-b border-gray-300 focus:outline-none text-black focus:border-gray-500"
+          />
+          <button 
+            type="submit" 
+            className="w-full bg-[#30aab3] text-white py-2 rounded hover:bg-[#54b1b8] focus:outline-none"
+          >
+            Login
+          </button>
+          <a className="text-[#30aab3] text-sm mt-4 inline-block hover:text-[#54b1b8]" href="#">
+            Forgot Username?
+          </a>
+        </form>
       </div>
-    </DashboardLayout>
+    </div>
   );
 };
 
-export default index;
+export default LoginComponent;

@@ -11,18 +11,13 @@ const PieChart = ({ waterLevel, title }) => {
 
     const setChartOptions = () => {
       const option = {
-        title: {
-           left: 'center',
-          fontSize: 12        },
+        
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} L ({d}%)',
           fontsize:20
         },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-        },
+       
         series: [
           {
             name: 'Water Level',

@@ -16,7 +16,7 @@ const sideNavItemsData = {
     {
       title: "Motors",
       icon: FaRegHandshake,
-      link: "/dashboard/motors",
+      link: "#",
     },
   ],
 };
@@ -41,8 +41,6 @@ const SideNavigation = ({ path }) => {
         isSidebarOpen ? "w-54" : "w-10"
       }`}
     >
-      
-
       {/* Logo */}
       <div className="flex items-center justify-center mt-6 font-bold mb-5">
         {/* <Image

@@ -80,8 +80,8 @@ const TankCard = ({
   }, []);
 
   return (
-    <div className="w-full px-6 md:w-1/2 lg:w-1/4 border-2 rounded-2xl ml-2 mt-6 shadow-md">
-      <div className="mb-10 w-full  ">
+    <div className="w-full px-6 md:w-1/2 lg:w-1/4 border-2 rounded-2xl ml-2  shadow-md">
+      <div className="mb-4 w-full  ">
         <div>
           <PieChart waterLevel={waterLevel} />
         </div>
