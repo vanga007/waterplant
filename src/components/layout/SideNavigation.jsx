@@ -23,6 +23,11 @@ const sideNavItemsData = {
       icon: FaRegHandshake,
       link: "#",
     },
+    {
+      title: "Data Analytics",
+      icon: FaRegHandshake,
+      link: "/dashboard/data",
+    },
   ],
 };
 

@@ -10,8 +10,7 @@ const TopNavigationBar = () => {
 
   return (
     <header className="sticky top-2 left-0 right-0 rounded-lg bg-[#6FDCE3] py-2 mt-2 mr-2 mb-2 text-black select-none z-50 border-gray-400 shadow-sm">
-      <div className="flex justify-between items-center px-4">
-        <div className="text-xl font-bold"></div>
+      <div className="flex justify-end items-center px-4">
         <div className="flex items-center gap-4">
           <button
             onClick={toggleDropdown}
