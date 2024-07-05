@@ -79,15 +79,15 @@ const DataAnalytics = () => {
 
   return (
     <div>
-      <div className="flex justify-end py-4">
+      <div className="flex justify-end py-4 w-1/2">
         <Button variant="contained" color="primary" onClick={downloadPDF}>
           Download as PDF
         </Button>
       </div>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow className="bg-[#6FDCE3]">
+      <TableContainer component={Paper} >
+        <Table className="w-1/2">
+          <TableHead className="w-1/2">
+            <TableRow className="bg-[#6FDCE3] w-1/2">
               <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Current Level</TableCell>
@@ -96,7 +96,7 @@ const DataAnalytics = () => {
               <TableCell>Timestamp</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="w-1/2">
             {data.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.id}</TableCell>
