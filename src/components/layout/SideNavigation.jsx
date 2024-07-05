@@ -4,6 +4,9 @@ import { FaRegHandshake } from "react-icons/fa";
 import { LuUsers } from "react-icons/lu";
 import { MdMenu } from "react-icons/md";
 import { useRouter } from "next/router";
+import { GiWaterTank } from "react-icons/gi";
+import { TbCircuitMotor } from "react-icons/tb";
+import { FaDatabase } from "react-icons/fa6";
 
 // sidebar navigation items data
 const sideNavItemsData = {
@@ -15,17 +18,17 @@ const sideNavItemsData = {
     },
     {
       title: "Tanks",
-      icon: LuUsers,
+      icon: GiWaterTank,
       link: "/dashboard/tanks",
     },
     {
       title: "Motors",
-      icon: FaRegHandshake,
+      icon: TbCircuitMotor,
       link: "#",
     },
     {
       title: "Data Analytics",
-      icon: FaRegHandshake,
+      icon: FaDatabase,
       link: "/dashboard/data",
     },
   ],
@@ -47,12 +50,12 @@ const SideNavigation = ({ path }) => {
 
   return (
     <div
-      className={`bg-[#6FDCE3] h-screen  m-2 rounded-lg text-black flex flex-col select-none z-50 sticky left-0 top-2 bottom-0 border-r-gray-500 transition-width duration-300 ${
+      className={`bg-orange-400 h-screen  m-2 rounded-lg text-black flex flex-col select-none z-50 sticky left-0 top-2 bottom-0 border-r-gray-500 transition-width duration-300 ${
         isSidebarOpen ? "w-54" : "w-10"
       }`}
     >
       {/* Logo */}
-      <div className="flex items-center justify-center mt-6 font-bold mb-5 sm:text-xs">
+      <div className="flex items-center justify-center mt-6 font-bold mb-5 2xl:text-xs">
         {/* <Image
           src={"/asserts/icons/testogo.png"}
           alt="Logo"
