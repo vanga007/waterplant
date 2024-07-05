@@ -60,7 +60,7 @@ const SideNavigation = ({ path }) => {
           height={50}
           width={50}
         /> */}
-        Menu
+        SHRASSHINE
       </div>
       {/* Menu Container */}
       <>
