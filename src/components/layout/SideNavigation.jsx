@@ -52,7 +52,7 @@ const SideNavigation = ({ path }) => {
       }`}
     >
       {/* Logo */}
-      <div className="flex items-center justify-center mt-6 font-bold mb-5">
+      <div className="flex items-center justify-center mt-6 font-bold mb-5 sm:text-xs">
         {/* <Image
           src={"/asserts/icons/testogo.png"}
           alt="Logo"

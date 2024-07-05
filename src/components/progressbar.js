@@ -7,9 +7,9 @@ const ProgressBar = ({ value, max, label }) => {
 
   return (
     <>
-      <div className="w-full  bg-gray-200 rounded-lg overflow-hidden my-2">
+      <div className="w-full  bg-gray-200 border border-black overflow-hidden my-2">
         <div
-          className="bg-blue-500 flex items-center h-8 text-[10px] py-2 font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg transition-all duration-300"
+          className="bg-blue-500 flex items-center h-8 text-[10px] py-2 font-medium text-blue-100 text-center p-0.5 leading-none  transition-all duration-300"
           style={{ width: `${percentage}%` }}
         >
           <span className=" uppercase  text-black text-xs whitespace-nowrap">

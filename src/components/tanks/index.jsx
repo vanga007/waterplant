@@ -16,8 +16,22 @@ const Motors = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setTanks(data);
-        console.log(data);
+
+        // Sort tanks by name
+        const sortedData = data.sort((a, b) => {
+          const nameA = a.name.toUpperCase(); // Ignore upper and lowercase
+          const nameB = b.name.toUpperCase(); // Ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+
+        setTanks(sortedData);
+        console.log(sortedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -32,7 +46,7 @@ const Motors = () => {
         <div className="flex flex-wrap justify-center">
           <div className="w-full text-center mb-[60px] lg:mb-20">
             <h2 className="mb-4 text-3xl font-bold text-dark text-black sm:text-4xl md:text-[40px]">
-             Live Tank Details
+              Tank Details
             </h2>
           </div>
         </div>
@@ -53,7 +67,6 @@ const Motors = () => {
     </section>
   );
 };
-
 export default Motors;
 
 const TankCard = ({
