@@ -26,11 +26,9 @@ const DataAnalytics = () => {
         }
         const logs = await response.json();
 
-        // Calculate date 3 days ago
         const threeDaysAgo = new Date();
         threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
 
-        // Filter and sort STORE operations with tanks by timestamp descending
         const filteredLogs = logs.filter(
           (log) =>
             log.operation === "STORE" &&
@@ -38,7 +36,9 @@ const DataAnalytics = () => {
             log.data.length > 0 &&
             new Date(log.timestamp) >= threeDaysAgo
         );
-        const sortedLogs = filteredLogs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        const sortedLogs = filteredLogs.sort(
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+        );
 
         setStoreOperations(sortedLogs);
         console.log("Store operations:", sortedLogs);
@@ -55,27 +55,34 @@ const DataAnalytics = () => {
     doc.text("Tank Activity Logs", 20, 10);
     doc.autoTable({
       head: [
-        ["Log ID", "Tank Name", "Current Level", "Location", "Total Capacity", "Date And Time"],
+        [
+          "Log ID",
+          "Tank Name",
+          "Current Level",
+          "Location",
+          "Total Capacity",
+          "Date And Time",
+        ],
       ],
       body: storeOperations.flatMap((log) =>
-        log.data.map((tank) => ([
+        log.data.map((tank) => [
           log.logId,
           tank.name,
           tank.currentLevel,
           tank.location,
           tank.totalCapacity,
           new Date(log.timestamp).toLocaleString(),
-        ]))
+        ])
       ),
     });
     doc.save("store-operations-report.pdf");
   };
 
   return (
-    <div>
-      <div className="flex justify-end py-4 ">
+    <div className="overflow-x-auto">
+      <div className="flex justify-end py-4 px-2 sm:px-0 ">
         <Button variant="contained" color="primary" onClick={downloadPDF}>
-          Download  PDF
+          Download PDF
         </Button>
       </div>
       <TableContainer component={Paper}>
@@ -99,7 +106,9 @@ const DataAnalytics = () => {
                   <TableCell>{tank.currentLevel}</TableCell>
                   <TableCell>{tank.location}</TableCell>
                   <TableCell>{tank.totalCapacity}</TableCell>
-                  <TableCell>{new Date(log.timestamp).toLocaleString()}</TableCell>
+                  <TableCell>
+                    {new Date(log.timestamp).toLocaleString()}
+                  </TableCell>
                 </TableRow>
               ))
             )}
