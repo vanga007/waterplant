@@ -94,7 +94,7 @@ const DataAnalytics = () => {
               <TableCell>Current Level</TableCell>
               <TableCell>Location</TableCell>
               <TableCell>Total Capacity</TableCell>
-              <TableCell>Timestamp</TableCell>
+              <TableCell>Date And Time</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
