@@ -75,7 +75,7 @@ const DataAnalytics = () => {
         ])
       ),
     });
-    doc.save("store-operations-report.pdf");
+    doc.save("Tanks-Logs.pdf");
   };
 
   return (
