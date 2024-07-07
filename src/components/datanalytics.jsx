@@ -89,11 +89,11 @@ const DataAnalytics = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Log ID</TableCell>
+              {/* <TableCell>Log ID</TableCell> */}
               <TableCell>Tank Name</TableCell>
-              <TableCell>Current Level</TableCell>
               <TableCell>Location</TableCell>
               <TableCell>Total Capacity</TableCell>
+              <TableCell>Current Level</TableCell>
               <TableCell>Date And Time</TableCell>
             </TableRow>
           </TableHead>
@@ -101,11 +101,12 @@ const DataAnalytics = () => {
             {storeOperations.flatMap((log) =>
               log.data.map((tank, index) => (
                 <TableRow key={`${log.logId}-${tank.id}`}>
-                  <TableCell>{log.logId}</TableCell>
+                  {/* <TableCell>{log.logId}</TableCell> */}
                   <TableCell>{tank.name}</TableCell>
-                  <TableCell>{tank.currentLevel}</TableCell>
                   <TableCell>{tank.location}</TableCell>
                   <TableCell>{tank.totalCapacity}</TableCell>
+                  <TableCell>{tank.currentLevel}</TableCell>
+
                   <TableCell>
                     {new Date(log.timestamp).toLocaleString()}
                   </TableCell>
