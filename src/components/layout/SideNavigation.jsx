@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { IoIosLogOut } from "react-icons/io";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -84,6 +85,16 @@ const Sidebar = () => {
               </svg>
               <span className="flex-1 ms-3 whitespace-nowrap">
                 Data Analytics
+              </span>
+            </Link>
+          </li>
+          
+          <li>
+            <Link href="/" className={getLinkClasses("/")}>
+            <IoIosLogOut  className="text-white font-extrabold text-2xl"/>
+
+              <span className="flex-1 ms-3 whitespace-nowrap">
+                Log out
               </span>
             </Link>
           </li>

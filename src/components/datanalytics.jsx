@@ -40,8 +40,17 @@ const DataAnalytics = () => {
           (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
         );
 
-        setStoreOperations(sortedLogs);
-        console.log("Store operations:", sortedLogs);
+        // Add serial number to each log's tank data
+        const logsWithSerialNumbers = sortedLogs.flatMap((log, logIndex) =>
+          log.data.map((tank, tankIndex) => ({
+            serialNumber: logIndex + 1,
+            ...tank,
+            timestamp: log.timestamp,
+          }))
+        );
+
+        setStoreOperations(logsWithSerialNumbers);
+        console.log("Store operations:", logsWithSerialNumbers);
       } catch (error) {
         console.error("Error fetching logs:", error);
       }
@@ -56,7 +65,7 @@ const DataAnalytics = () => {
     doc.autoTable({
       head: [
         [
-          "Log ID",
+          "S.No",
           "Tank Name",
           "Current Level",
           "Location",
@@ -64,16 +73,14 @@ const DataAnalytics = () => {
           "Date And Time",
         ],
       ],
-      body: storeOperations.flatMap((log) =>
-        log.data.map((tank) => [
-          log.logId,
-          tank.name,
-          tank.currentLevel,
-          tank.location,
-          tank.totalCapacity,
-          new Date(log.timestamp).toLocaleString(),
-        ])
-      ),
+      body: storeOperations.map((tank, index) => [
+        index + 1,
+        tank.name,
+        tank.currentLevel,
+        tank.location,
+        tank.totalCapacity,
+        new Date(tank.timestamp).toLocaleString(),
+      ]),
     });
     doc.save("Tanks-Logs.pdf");
   };
@@ -89,7 +96,7 @@ const DataAnalytics = () => {
         <Table>
           <TableHead>
             <TableRow>
-              {/* <TableCell>Log ID</TableCell> */}
+              <TableCell>S.No</TableCell>
               <TableCell>Tank Name</TableCell>
               <TableCell>Location</TableCell>
               <TableCell>Total Capacity</TableCell>
@@ -98,21 +105,16 @@ const DataAnalytics = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {storeOperations.flatMap((log) =>
-              log.data.map((tank, index) => (
-                <TableRow key={`${log.logId}-${tank.id}`}>
-                  {/* <TableCell>{log.logId}</TableCell> */}
-                  <TableCell>{tank.name}</TableCell>
-                  <TableCell>{tank.location}</TableCell>
-                  <TableCell>{tank.totalCapacity}</TableCell>
-                  <TableCell>{tank.currentLevel}</TableCell>
-
-                  <TableCell>
-                    {new Date(log.timestamp).toLocaleString()}
-                  </TableCell>
-                </TableRow>
-              ))
-            )}
+            {storeOperations.map((tank, index) => (
+              <TableRow key={index}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{tank.name}</TableCell>
+                <TableCell>{tank.location}</TableCell>
+                <TableCell>{tank.totalCapacity}</TableCell>
+                <TableCell>{tank.currentLevel}</TableCell>
+                <TableCell>{new Date(tank.timestamp).toLocaleString()}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
