@@ -110,8 +110,8 @@ const DataAnalytics = () => {
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{tank.name}</TableCell>
                 <TableCell>{tank.location}</TableCell>
-                <TableCell>{tank.totalCapacity}</TableCell>
-                <TableCell>{tank.currentLevel}</TableCell>
+                <TableCell>{tank.totalCapacity} Gal </TableCell>
+                <TableCell>{tank.currentLevel} Gal </TableCell>
                 <TableCell>{new Date(tank.timestamp).toLocaleString()}</TableCell>
               </TableRow>
             ))}

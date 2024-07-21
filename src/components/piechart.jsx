@@ -12,7 +12,7 @@ const PieChart = ({ waterLevel, totalCapacity, title }) => {
       const option = {
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} L ({d}%)',
+          formatter: '{a} <br/>{b} : {c} G ({d}%)',
           fontsize: 20
         },
         series: [

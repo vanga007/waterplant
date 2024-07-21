@@ -13,7 +13,7 @@ const ProgressBar = ({ value, max, label }) => {
           style={{ width: `${percentage}%` }}
         >
           <span className=" uppercase  text-black text-xs whitespace-nowrap">
-            {label} : {value} L
+            {label} : {value} G
           </span>
         </div>
       </div>

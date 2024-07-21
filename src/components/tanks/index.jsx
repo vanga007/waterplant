@@ -92,7 +92,7 @@ const TankCard = ({
               Current Level:
             </h1>
             <p className="text-gray-600 font-medium  text-xl dark:text-dark-6 pl-2">
-              {currentLevel}
+              {currentLevel} G
             </p>
           </div>
           <div className="flex py-1">
@@ -100,7 +100,7 @@ const TankCard = ({
               Total Capacity:
             </h1>
             <p className="text-gray-600 font-medium  text-xl dark:text-dark-6 pl-2">
-              {totalCapacity}
+              {totalCapacity} G
             </p>
           </div>
           <div className="flex py-1">
