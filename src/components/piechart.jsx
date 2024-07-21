@@ -2,34 +2,27 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-const PieChart = ({ waterLevel, title }) => {
+const PieChart = ({ waterLevel, totalCapacity, title }) => {
   const chartRef = useRef(null);
-  const totalCapacity = 500000;
 
   useEffect(() => {
     const chartInstance = echarts.init(chartRef.current);
 
     const setChartOptions = () => {
       const option = {
-        
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} L ({d}%)',
-          fontsize:20
+          fontsize: 20
         },
-       
         series: [
           {
             name: 'Water Level',
             type: 'pie',
             radius: '90%',
             data: [
-              { value: waterLevel, name: 'Available Water', itemStyle: {
-                color: '#00aaff' 
-              } },
-              { value: totalCapacity - waterLevel, name: 'Total Capacity' , itemStyle: {
-                color: '#FF6500' 
-              }},
+              { value: waterLevel, name: 'Available Water', itemStyle: { color: '#00aaff' } },
+              { value: totalCapacity - waterLevel, name: 'Total Capacity', itemStyle: { color: '#FF6500' } },
             ],
             emphasis: {
               itemStyle: {
@@ -49,7 +42,7 @@ const PieChart = ({ waterLevel, title }) => {
     return () => {
       chartInstance.dispose();
     };
-  }, [waterLevel, title, totalCapacity]);
+  }, [waterLevel, totalCapacity, title]);
 
   return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
 };

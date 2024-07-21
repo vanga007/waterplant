@@ -80,9 +80,9 @@ const TankCard = ({
     <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
       <div className="border-2 rounded-2xl shadow-md p-6">
         <div className="mb-4 w-full">
-          <PieChart waterLevel={currentLevel} />
+          <PieChart waterLevel={currentLevel} totalCapacity={totalCapacity} />
         </div>
-        <ProgressBar value={currentLevel} max="500000" />
+        <ProgressBar value={currentLevel} max={totalCapacity} />
         <div>
           <h1 className="inline-block text-xl font-semibold text-gray-600 text-dark py-2 sm:text-2xl lg:text-xl xl:text-2xl">
             {name}
