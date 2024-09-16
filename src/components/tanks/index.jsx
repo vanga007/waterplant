@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import PieChart from "../piechart";
-import { formatDate } from "@/pages/utils/dateFormatter";
 import ProgressBar from "../progressbar";
+import { useRouter } from "next/router";
 
 const Motors = () => {
+  const router = useRouter();
+  const { pathname } = router;
   const [tanks, setTanks] = useState([]);
+
+  const shrasshineendpoint = "https://9i2im325lb.execute-api.us-east-1.amazonaws.com/waterplant";
+  const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://9i2im325lb.execute-api.us-east-1.amazonaws.com/waterplant"
-        );
+         const endpoint = pathname === "/militarydashborad/tanks" ? Militaryendpoint : shrasshineendpoint;
+
+        const response = await fetch(endpoint);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -19,8 +24,8 @@ const Motors = () => {
 
         // Sort tanks by name
         const sortedData = data.sort((a, b) => {
-          const nameA = a.name.toUpperCase(); // Ignore upper and lowercase
-          const nameB = b.name.toUpperCase(); // Ignore upper and lowercase
+          const nameA = a.name.toUpperCase();  
+          const nameB = b.name.toUpperCase();  
           if (nameA < nameB) {
             return -1;
           }
@@ -38,8 +43,7 @@ const Motors = () => {
     };
 
     fetchData();
-  }, []);
-
+  }, [pathname]);
   return (
     <section className="bg-gray-100 pb-10 pt-14 dark:bg-dark lg:pb-20 lg:pt-[60px] text-black">
       <div className="container mx-auto px-4">

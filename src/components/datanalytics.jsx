@@ -11,16 +11,21 @@ import {
 } from "@mui/material";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { useRouter } from "next/router";
 
 const DataAnalytics = () => {
+  const router = useRouter();
+  const { pathname } = router;
   const [storeOperations, setStoreOperations] = useState([]);
+  const shrasshineendpoint = "https://9i2im325lb.execute-api.us-east-1.amazonaws.com/waterplant/logs";
+  const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl/Logs";
 
   useEffect(() => {
+    const endpoint = pathname.includes("militarydashborad") ? Militaryendpoint : shrasshineendpoint;
+
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://9i2im325lb.execute-api.us-east-1.amazonaws.com/waterplant/logs"
-        );
+        const response = await fetch(endpoint);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -57,7 +62,7 @@ const DataAnalytics = () => {
     };
 
     fetchData();
-  }, []);
+  }, [pathname]);
 
   const downloadPDF = () => {
     const doc = new jsPDF();
