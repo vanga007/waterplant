@@ -1,46 +1,73 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { useState } from "react"
+import { useRouter } from "next/router"
 
 const LoginComponent = () => {
-  const router = useRouter();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const router = useRouter()
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
-  // Hardcoded credentials for two organizations
   const org1Credentials = {
     username: "shrasshine123@gmail.com",
     password: "shrasshine@123S",
-  };
+    credential: 'military'
+  }
   const org2Credentials = {
     username: "militarydashborad123@gmail.com",
     password: "military@123M",
-  };
+    credential: 'Military'
+  }
+  const org3Credentials = {
+    username: "KVTdashborad123@gmail.com",
+    password: "kvt@123K",
+    credential: 'KVT'
+  }
+  const org4Credentials = {
+    username: "jcomaplinedashborad123@gmail.com",
+    password: "jcomapline@123J",
+    credential: 'JCO MAP LINE'
+  }
 
   const handleLogin = (e) => {
-    e.preventDefault();
-  
-    // Check credentials for Organization 1
+    e.preventDefault()
+
     if (
       username === org1Credentials.username &&
       password === org1Credentials.password
     ) {
-      localStorage.setItem('isAuthenticated', 'true');
-      router.push('/dashboard');
+      localStorage.setItem('isAuthenticated', 'true')
+      localStorage.setItem('activeCredential', org1Credentials.credential)
+      router.push('/dashboard')
     }
-    // Check credentials for Organization 2
     else if (
       username === org2Credentials.username &&
       password === org2Credentials.password
     ) {
-      localStorage.setItem('isAuthenticated', 'true');
-      router.push('/militarydashborad');
+      localStorage.setItem('isAuthenticated', 'true')
+      localStorage.setItem('activeCredential', org2Credentials.credential)
+      router.push('/militarydashborad')
+    }
+    else if (
+      username === org3Credentials.username &&
+      password === org3Credentials.password
+    ) {
+      localStorage.setItem('isAuthenticated', 'true')
+      localStorage.setItem('activeCredential', org3Credentials.credential)
+      router.push('/Kvtdashborad')
+    }
+    else if (
+      username === org4Credentials.username &&
+      password === org4Credentials.password
+    ) {
+      localStorage.setItem('isAuthenticated', 'true')
+      localStorage.setItem('activeCredential', org4Credentials.credential)
+      router.push('/jcomaplinedashborad')
     }
     // Invalid credentials
     else {
-      alert('Invalid credentials');
+      alert('Invalid credentials')
     }
-  };
-  
+  }
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-8">
@@ -80,7 +107,7 @@ const LoginComponent = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginComponent;
+export default LoginComponent

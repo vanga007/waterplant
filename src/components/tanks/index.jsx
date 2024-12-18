@@ -1,49 +1,56 @@
-import React, { useEffect, useState } from "react";
-import PieChart from "../piechart";
-import ProgressBar from "../progressbar";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react"
+import PieChart from "../piechart"
+import ProgressBar from "../progressbar"
+import { useRouter } from "next/router"
 
 const Motors = () => {
-  const router = useRouter();
-  const { pathname } = router;
-  const [tanks, setTanks] = useState([]);
+  const router = useRouter()
+  const { pathname } = router
+  const [tanks, setTanks] = useState([])
 
-  const shrasshineendpoint = "https://9i2im325lb.execute-api.us-east-1.amazonaws.com/waterplant";
-  const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl";
+  // Single endpoint to fetch tank data
+  const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl"
+
+  const activeCredential = localStorage.getItem('activeCredential')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-         const endpoint = pathname === "/militarydashborad/tanks" ? Militaryendpoint : shrasshineendpoint;
-
-        const response = await fetch(endpoint);
+        const response = await fetch(Militaryendpoint)
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Network response was not ok")
         }
-        const data = await response.json();
+        const data = await response.json()
+
+        // Filter the tanks based on the active credential
+        const filteredTanks = data.filter(tank => {
+          if (activeCredential === "KVT") {
+            return tank.name === "KVT Tank" // Only show KVT Tank data
+          } else if (activeCredential === "Military") {
+            return tank.name === "MH Tank" // Only show Military Tank data
+          } else if (activeCredential === "JCO MAP LINE") {
+            return tank.name === "JCO MAP LINE " // Only show JCO MAP LINE data
+          }
+          return true // If no specific credential, show all tanks
+        })
 
         // Sort tanks by name
-        const sortedData = data.sort((a, b) => {
-          const nameA = a.name.toUpperCase();  
-          const nameB = b.name.toUpperCase();  
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-          return 0;
-        });
+        const sortedData = filteredTanks.sort((a, b) => {
+          const nameA = a.name.toUpperCase()
+          const nameB = b.name.toUpperCase()
+          return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
+        })
 
-        setTanks(sortedData);
-        console.log(sortedData);
+        setTanks(sortedData)
+        console.log(sortedData)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error)
       }
-    };
+    }
 
-    fetchData();
-  }, [pathname]);
+    fetchData()
+  }, [pathname, activeCredential]) // Re-run when pathname or activeCredential changes
+
   return (
     <section className="bg-gray-100 pb-10 pt-14 dark:bg-dark lg:pb-20 lg:pt-[60px] text-black">
       <div className="container mx-auto px-4">
@@ -56,22 +63,26 @@ const Motors = () => {
         </div>
 
         <div className="flex flex-wrap justify-center -mx-4">
-          {tanks.map((tank) => (
-            <TankCard
-              key={tank.id}
-              name={tank.name}
-              currentLevel={tank.currentLevel}
-              totalCapacity={tank.totalCapacity}
-              location={tank.location}
-              timestamp={tank.timestamp}
-            />
-          ))}
+          {tanks.length > 0 ? (
+            tanks.map((tank) => (
+              <TankCard
+                key={tank.id}
+                name={tank.name}
+                currentLevel={tank.currentLevel}
+                totalCapacity={tank.totalCapacity}
+                location={tank.location}
+                timestamp={tank.timestamp}
+              />
+            ))
+          ) : (
+            <div>No tanks available for the selected credential.</div>
+          )}
         </div>
       </div>
     </section>
-  );
-};
-export default Motors;
+  )
+}
+export default Motors
 
 const TankCard = ({
   name,
@@ -115,14 +126,8 @@ const TankCard = ({
               {location}
             </p>
           </div>
-          {/* <div className="flex py-1">
-            <h1 className="text-black font-semibold">Timestamp:</h1>
-            <p className="text-gray-600 font-medium dark:text-dark-6 pl-2">
-              {formatDate(timestamp)}
-            </p>
-          </div> */}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

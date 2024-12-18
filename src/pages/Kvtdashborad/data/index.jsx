@@ -9,7 +9,7 @@ function App() {
     <DashboardLayout>
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Data Table with PDF Download   
+        Data Table with PDF Download
       </Typography>
       <DataAnalytics />
     </Container>

@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaCircle } from "react-icons/fa";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useState } from "react"
+import { MdKeyboardArrowDown } from "react-icons/md"
+import { FaCircle } from "react-icons/fa"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
+  const [open, setOpen] = useState(false)
+  const router = useRouter()
 
-  const isActive = (link) => router.asPath === link;
+  const isActive = (link) => router.asPath === link
 
   return (
     <div className="flex flex-col  cursor-pointer mx-2">
       {/* Main Menu */}
       <Link href={MenuItem.link || "#"}>
         <div
-          className={`group flex gap-3 mb-1 items-center ${
-            isActive(MenuItem.link)
+          className={`group flex gap-3 mb-1 items-center ${isActive(MenuItem.link)
               ? "bg-white text-black"
               : "hover:bg-white text-black"
-          } rounded-md p-3 transition-all duration-300 ease-in-out`}
+            } rounded-md p-3 transition-all duration-300 ease-in-out`}
           onClick={() => setOpen(!open)}
         >
           {MenuItem.img ? (
@@ -36,9 +35,8 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
           )}
           {MenuItem.subMenu && (
             <MdKeyboardArrowDown
-              className={`ml-auto text-xl ${
-                open ? "rotate-180" : ""
-              } transition-transform duration-300`}
+              className={`ml-auto text-xl ${open ? "rotate-180" : ""
+                } transition-transform duration-300`}
             />
           )}
         </div>
@@ -64,11 +62,10 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
             {MenuItem.subMenu.map((subMenuItem, index) => (
               <Link key={index} href={subMenuItem.link}>
                 <div
-                  className={`flex gap-3 px-4 py-2 text-gray-700 ${
-                    isActive(subMenuItem.link)
+                  className={`flex gap-3 px-4 py-2 text-gray-700 ${isActive(subMenuItem.link)
                       ? "bg-blue-300 text-black"
                       : "hover:bg-blue-200 hover:text-black"
-                  } rounded-md transition-all duration-300 ease-in-out`}
+                    } rounded-md transition-all duration-300 ease-in-out`}
                 >
                   {subMenuItem.img ? (
                     <img
@@ -91,7 +88,7 @@ const SideNavBarItem = ({ MenuItem, isSidebarOpen }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default SideNavBarItem;
+export default SideNavBarItem
