@@ -7,11 +7,17 @@ const Motors = () => {
   const router = useRouter()
   const { pathname } = router
   const [tanks, setTanks] = useState([])
-
+  const [storedData, setStoredData] = useState(null);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Access localStorage here
+      const activeCredential = localStorage.getItem('activeCredential')
+      setStoredData(activeCredential);
+    }
+  }, []);
   // Single endpoint to fetch tank data
   const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl"
 
-  const activeCredential = localStorage.getItem('activeCredential')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,11 +30,11 @@ const Motors = () => {
 
         // Filter the tanks based on the active credential
         const filteredTanks = data.filter(tank => {
-          if (activeCredential === "KVT") {
+          if (storedData === "KVT") {
             return tank.name === "KVT Tank" // Only show KVT Tank data
-          } else if (activeCredential === "Military") {
+          } else if (storedData === "Military") {
             return tank.name === "MH Tank" // Only show Military Tank data
-          } else if (activeCredential === "JCO MAP LINE") {
+          } else if (storedData === "JCO MAP LINE") {
             return tank.name === "JCO MAP LINE " // Only show JCO MAP LINE data
           }
           return true // If no specific credential, show all tanks
@@ -49,7 +55,7 @@ const Motors = () => {
     }
 
     fetchData()
-  }, [pathname, activeCredential]) // Re-run when pathname or activeCredential changes
+  }, [pathname, storedData]) // Re-run when pathname or activeCredential changes
 
   return (
     <section className="bg-gray-100 pb-10 pt-14 dark:bg-dark lg:pb-20 lg:pt-[60px] text-black">

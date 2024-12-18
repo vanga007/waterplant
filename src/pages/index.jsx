@@ -28,7 +28,11 @@ const LoginComponent = () => {
   }
 
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    if (typeof window === 'undefined') {
+      return;  
+    }
 
     if (
       username === org1Credentials.username &&

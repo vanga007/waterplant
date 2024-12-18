@@ -14,11 +14,19 @@ import "jspdf-autotable"
 
 const DataAnalytics = () => {
   const [storeOperations, setStoreOperations] = useState([])
+  const [storedData, setStoredData] = useState(null);
+
+useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Access localStorage here
+      const activeCredential = localStorage.getItem('activeCredential')
+      setStoredData(activeCredential);
+    }
+  }, []);
 
   const endpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl/logs"
 
-  const activeCredential = localStorage.getItem('activeCredential')
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,11 +44,11 @@ const DataAnalytics = () => {
           return {
             ...log,
             data: log.data.filter((tank) => {
-              if (activeCredential === "KVT") {
+              if (storedData === "KVT") {
                 return tank.name === "KVT Tank"
-              } else if (activeCredential === "Military") {
+              } else if (storedData === "Military") {
                 return tank.name === "MH Tank"
-              } else if (activeCredential === "JCO MAP LINE") {
+              } else if (storedData === "JCO MAP LINE") {
                 return tank.name === "JCO MAP LINE "
               }
               return true
@@ -68,7 +76,7 @@ const DataAnalytics = () => {
     }
 
     fetchData()
-  }, [activeCredential])
+  }, [storedData])
 
   const downloadPDF = () => {
     const doc = new jsPDF()
