@@ -1,61 +1,75 @@
-import React, { useEffect, useState } from "react"
-import PieChart from "../piechart"
-import ProgressBar from "../progressbar"
-import { useRouter } from "next/router"
+import React, { useEffect, useState } from "react";
+import PieChart from "../piechart";
+import ProgressBar from "../progressbar";
+import { useRouter } from "next/router";
 
 const Motors = () => {
-  const router = useRouter()
-  const { pathname } = router
-  const [tanks, setTanks] = useState([])
-  const [storedData, setStoredData] = useState(null);
+  const router = useRouter();
+  const { pathname } = router;
+  const [tanks, setTanks] = useState([]);
+  const [storedData, setStoredData] = useState();
+
+  // Fetch activeCredential from localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Access localStorage here
-      const activeCredential = localStorage.getItem('activeCredential')
+      const activeCredential = localStorage.getItem("activeCredential");
       setStoredData(activeCredential);
     }
   }, []);
-  // Single endpoint to fetch tank data
-  const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl"
 
+  // Shrashine and Military API endpoints
+  const Militaryendpoint = "https://7vut6337yf.execute-api.us-east-1.amazonaws.com/militaryHsptl";
+  const ShrashineEndpoint = "https://9i2im325lb.execute-api.us-east-1.amazonaws.com/waterplant";
 
+  // Fetch data based on the current URL
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(Militaryendpoint)
+        // Log pathname to debug
+        console.log("Current Path:", pathname);
+
+        // Set endpoint dynamically based on pathname
+        const endpoint = pathname.includes("dashboard") ? ShrashineEndpoint : Militaryendpoint;
+
+        console.log("Fetching from endpoint:", endpoint);
+
+        const response = await fetch(endpoint);
+
         if (!response.ok) {
-          throw new Error("Network response was not ok")
+          throw new Error("Network response was not ok");
         }
-        const data = await response.json()
+
+        const data = await response.json();
+        console.log("API Response Data:", data);
 
         // Filter the tanks based on the active credential
-        const filteredTanks = data.filter(tank => {
+        const filteredTanks = data.filter((tank) => {
           if (storedData === "KVT") {
-            return tank.name === "KVT Tank" // Only show KVT Tank data
+            return tank.name === "KVT Tank"; // Only show KVT Tank data
           } else if (storedData === "Military") {
-            return tank.name === "MH Tank" // Only show Military Tank data
+            return tank.name === "MH Tank"; // Only show Military Tank data
           } else if (storedData === "JCO MAP LINE") {
-            return tank.name === "JCO MAP LINE " // Only show JCO MAP LINE data
+            return tank.name === "JCO MAP LINE "; // Only show JCO MAP LINE data
           }
-          return true // If no specific credential, show all tanks
-        })
+          return true; // If no specific credential, show all tanks
+        });
 
         // Sort tanks by name
         const sortedData = filteredTanks.sort((a, b) => {
-          const nameA = a.name.toUpperCase()
-          const nameB = b.name.toUpperCase()
-          return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
-        })
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+        });
 
-        setTanks(sortedData)
-        console.log(sortedData)
+        setTanks(sortedData);
+        console.log("Sorted Tanks:", sortedData);
       } catch (error) {
-        console.error("Error fetching data:", error)
+        console.error("Error fetching data:", error);
       }
-    }
+    };
 
-    fetchData()
-  }, [pathname, storedData]) // Re-run when pathname or activeCredential changes
+    fetchData();
+  }, [pathname, storedData]); // Re-run when pathname or activeCredential changes
 
   return (
     <section className="bg-gray-100 pb-10 pt-14 dark:bg-dark lg:pb-20 lg:pt-[60px] text-black">
@@ -86,17 +100,12 @@ const Motors = () => {
         </div>
       </div>
     </section>
-  )
-}
-export default Motors
+  );
+};
 
-const TankCard = ({
-  name,
-  currentLevel,
-  totalCapacity,
-  location,
-  timestamp,
-}) => {
+export default Motors;
+
+const TankCard = ({ name, currentLevel, totalCapacity, location, timestamp }) => {
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
       <div className="border-2 rounded-2xl shadow-md p-6">
@@ -112,15 +121,15 @@ const TankCard = ({
             <h1 className="text-black font-semibold text-xl whitespace-nowrap">
               Current Level:
             </h1>
-            <p className="text-gray-600 font-medium  text-xl dark:text-dark-6 pl-2">
+            <p className="text-gray-600 font-medium text-xl dark:text-dark-6 pl-2">
               {currentLevel} G
             </p>
           </div>
           <div className="flex py-1">
-            <h1 className="text-black font-semibold text-xl  whitespace-nowrap">
+            <h1 className="text-black font-semibold text-xl whitespace-nowrap">
               Total Capacity:
             </h1>
-            <p className="text-gray-600 font-medium  text-xl dark:text-dark-6 pl-2">
+            <p className="text-gray-600 font-medium text-xl dark:text-dark-6 pl-2">
               {totalCapacity} G
             </p>
           </div>
@@ -128,12 +137,12 @@ const TankCard = ({
             <h1 className="text-black text-xl font-semibold whitespace-nowrap">
               Location:
             </h1>
-            <p className="text-gray-600  text-xl font-medium dark:text-dark-6 pl-2">
+            <p className="text-gray-600 text-xl font-medium dark:text-dark-6 pl-2">
               {location}
             </p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -33,13 +33,13 @@ const Sidebar = () => {
     (cred) => cred.name === activeCredential
   ) || credentials[0]  // Fallback to the first one if no activeCredential is found
 
+  
   const getLinkClasses = (href) => {
     return pathname === href
       ? "flex items-center p-2 text-gray-900 rounded-lg dark:text-white bg-gray-100 dark:bg-gray-700 group"
       : "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
   }
-
-  const handleLogout = () => {
+   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated')
     localStorage.removeItem('activeCredential')  // Also clear the active credential on logout
     router.push('/')
