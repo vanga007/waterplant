@@ -6,7 +6,7 @@ const index = () => {
   return (
     <DashboardLayout>
         <div>
-          <Tanks/>
+          <Tanks />
         </div>
     </DashboardLayout>
     

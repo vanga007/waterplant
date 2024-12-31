@@ -1,61 +1,132 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import Image from "next/image";
 import React from "react";
 import withAuth from "../withAuth";
- const index = () => {
+
+const Index = () => {
   return (
     <DashboardLayout>
-      <div class="">
-        <div class="mx-auto max-w-7xl py-12 sm:px-6 sm:py-12 lg:px-8">
-          <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
-            <svg
-              viewBox="0 0 1024 1024"
-              class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
-              aria-hidden="true"
-            >
-              <circle
-                cx="512"
-                cy="512"
-                r="512"
-                fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
-                fill-opacity="0.7"
-              />
-              <defs>
-                <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
-                  <stop stop-color="#7775D6" />
-                  <stop offset="1" stop-color="#E935C1" />
-                </radialGradient>
-              </defs>
-            </svg>
-            <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-              <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Shrasshine Automatic.
-                <br />
-                Water Level status Indication with Backup
-              </h2>
-              <p class="mt-6 text-lg leading-8 text-gray-300">
-                
+      <div className="bg-gray-50">
+        
+
+        {/* Hero Section */}
+        <section className="relative bg-gray-800 text-white py-20 lg:py-28">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
+            <div className="lg:w-1/2 text-center lg:text-left">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                Smarter Water Monitoring
+              </h1>
+              <p className="mt-4 text-lg">
+                Automate your water management with real-time status updates and
+                backup systems. Designed for efficiency and reliability.
               </p>
-              <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+              <div className="mt-6 flex justify-center lg:justify-start gap-x-4">
                 <a
                   href="#"
-                  class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium"
                 >
-                  Get started
+                  Get Started
                 </a>
-                <a href="#" class="text-sm font-semibold leading-6 text-white">
-                  Learn more <span aria-hidden="true">→</span>
+                <a
+                  href="#"
+                  className="bg-gray-100 hover:bg-gray-200 text-indigo-600 px-5 py-3 rounded-lg font-medium"
+                >
+                  Learn More
                 </a>
               </div>
             </div>
-            <div class="relative mt-16 h-80 lg:mt-8">
-              {/* <Image class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src={} alt="App screenshot" width="1824" height="1080"/> */}
+            <div className="lg:w-1/2 mt-10 lg:mt-0">
+              <img
+                src="/water-monitor.jpg" // Replace with an actual image
+                alt="Water Monitoring System"
+                className="rounded-lg shadow-lg"
+              />
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Features Section */}
+        <section id="features" className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-gray-900">Why Choose Us?</h2>
+              <p className="mt-4 text-gray-600">
+                Explore the features that make Shrasshine unique and reliable.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { title: "Real-Time Updates", icon: "📡" },
+                { title: "Backup Power", icon: "🔋" },
+                { title: "Easy Setup", icon: "⚙️" },
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className="p-6 bg-gray-100 rounded-lg shadow-md text-center"
+                >
+                  <div className="text-4xl">{feature.icon}</div>
+                  <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
+                  <p className="mt-2 text-gray-600">
+                    A detailed explanation of the feature.
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section id="testimonials" className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900">What Our Users Say</h2>
+            <p className="mt-4 text-gray-600">
+              Hear from satisfied customers who love Shrasshine.
+            </p>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { name: "John Doe", text: "This system saved us so much time!", rating: 5 },
+                { name: "Jane Smith", text: "Highly recommend this to everyone.", rating: 4 },
+                { name: "Samuel Green", text: "Reliable and easy to use.", rating: 5 },
+              ].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="p-6 bg-white rounded-lg shadow-md text-left"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-300"></div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-bold">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-600">
+                        {"⭐".repeat(testimonial.rating)}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-gray-700">{testimonial.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-gray-300 py-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <p>© 2024 Shrasshine. All rights reserved.</p>
+            <nav className="mt-4">
+              <a href="#" className="hover:underline mx-2">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:underline mx-2">
+                Terms of Service
+              </a>
+              <a href="#" className="hover:underline mx-2">
+                Contact
+              </a>
+            </nav>
+          </div>
+        </footer>
       </div>
     </DashboardLayout>
   );
 };
 
-export default  withAuth(index);
+export default withAuth(Index);
