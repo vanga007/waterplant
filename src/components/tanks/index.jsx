@@ -50,7 +50,7 @@ const Motors = () => {
           } else if (storedData === "bmh") {
             return tank.name === " BMH TANK ";
           } else if (storedData === "JCOMAPLINE") {
-            return tank.name === "JCO MAP LINE ";
+            return tank.name === " JCO MAP LINE ";
           } else if (storedData === "GUNROCKTANK2") {
             return tank.name === " GUN ROCK TANK 2 ";
           } else if (storedData === "GOUGHLINETANK") {
