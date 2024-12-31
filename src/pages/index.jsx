@@ -22,6 +22,11 @@ const LoginComponent = () => {
       "militarydashborad123@gmail.com": { password: "military@123M", path: "/militarydashborad", credential: "Military" },
       "KVTdashborad123@gmail.com": { password: "kvt@123K", path: "/Kvtdashborad", credential: "KVT" },
       "jcomaplinedashborad123@gmail.com": { password: "jcomapline@123J", path: "/jcomaplinedashborad", credential: "JCO MAP LINE" },
+      "gunrock1dashborad@gmail.com": { password: "gunrock1@G", path: "/gunrock1dashborad", credential: "GUNROCKTANK1" },
+      "gunrock2dashborad@gmail.com": { password: "gunrock2@G", path: "/gunrock2dashborad", credential: "GUNROCKTANK2" },
+      "goughlinedashborad@gmail.com": { password: "goughline1@G", path: "/goughlinedashborad", credential: "GOUGHLINETANK" },
+      "bmhmilitarydashborad123@gmail.com": { password: "bmhilitary@B", path: "/bhmilitarydashborad", credential: "bmh" },
+
     };
 
     const user = credentials[username];
@@ -50,7 +55,7 @@ const LoginComponent = () => {
               placeholder="Enter your email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              className="w-full px-4 py-3 border text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
             />
           </div>
           <div className="mb-6">
@@ -60,7 +65,7 @@ const LoginComponent = () => {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              className="w-full px-4 py-3 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
             />
           </div>
           <button

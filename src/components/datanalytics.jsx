@@ -72,11 +72,19 @@ const DataAnalytics = () => {
                 ...log,
                 data: log.data.filter((tank) => {
                   if (storedData === "KVT") {
-                    return tank.name === "KVT Tank";
+                    return tank.name === " KVT ";
                   } else if (storedData === "Military") {
-                    return tank.name === "MH Tank";
-                  } else if (storedData === "JCO MAP LINE") {
+                    return tank.name === " MH TANK ";
+                  } else if (storedData === "bmh") {
+                    return tank.name === " BMH TANK ";
+                  } else if (storedData === "JCOMAPLINE") {
                     return tank.name === "JCO MAP LINE ";
+                  } else if (storedData === "GUNROCKTANK2") {
+                    return tank.name === " GUN ROCK TANK 2 ";
+                  } else if (storedData === "GOUGHLINETANK") {
+                    return tank.name === " GOUGH LINE TANK ";
+                  } else if (storedData === "GUNROCKTANK1") {
+                    return tank.name === " GUN ROCK TANK 1 ";
                   }
                   return true;
                 }),
